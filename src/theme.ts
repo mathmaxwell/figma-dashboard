@@ -24,30 +24,30 @@ declare module "@mui/material/styles" {
 }
 
 const theme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: {
-      main: "#7551FF", // buttons
-    },
-    background: {
-      default: "#111C44", // основной bgcolor
-      paper: "#1B254B", // второй bgcolor
-      secondary: "#1B254B",
-    },
-    text: {
-      primary: "#FFFFFF", // цвет текста белый
-      secondary: "#A3AED0", // второй цвет текста
-    },
-    accents: {
-      green: "#01B574",
-      orange: "#FFB547",
-      blue: "#3965FF",
-      red: "#EE5D50",
-    },
-  },
-  typography: {
-    fontFamily: '"DM Sans", sans-serif',
-  },
-});
+	palette: {
+		mode: 'dark',
+		primary: {
+			main: '#7551FF', // buttons
+		},
+		background: {
+			default: '#0B1437', // основной bgcolor
+			paper: '#111C44', // второй bgcolor
+			secondary: '#1B254B',
+		},
+		text: {
+			primary: '#FFFFFF', // цвет текста белый
+			secondary: '#A3AED0', // второй цвет текста
+		},
+		accents: {
+			green: '#01B574',
+			orange: '#FFB547',
+			blue: '#3965FF',
+			red: '#EE5D50',
+		},
+	},
+	typography: {
+		fontFamily: '"DM Sans", sans-serif',
+	},
+})
 
 export default theme;

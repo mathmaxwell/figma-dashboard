@@ -39,7 +39,7 @@ const SiteBar = () => {
 				width: '100%',
 				maxWidth: '300px',
 				minWidth: '30px',
-				bgcolor: theme.palette.background.paper,
+				bgcolor: theme.palette.background.secondary,
 				height: '100vh',
 				border: '1px solid white',
 				borderRadius: 4,

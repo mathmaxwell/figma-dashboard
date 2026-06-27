@@ -11,7 +11,7 @@ const Header = () => {
 				sx={{
 					width: '100%',
 					p: 2,
-					bgcolor: theme.palette.background.paper,
+					bgcolor: theme.palette.background.secondary,
 					border: '1px solid white',
 					borderRadius: 4,
 					display: 'flex',

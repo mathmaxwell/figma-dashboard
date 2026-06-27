@@ -12,6 +12,8 @@ const Layout = () => {
 				width: '100vw',
 				bgcolor: theme.palette.background.default,
 				gap: 2,
+				maxHeight: '100vh',
+				overflowY: 'hidden',
 			}}
 		>
 			<SiteBar />
@@ -21,10 +23,16 @@ const Layout = () => {
 					display: 'flex',
 					flexDirection: 'column',
 					minWidth: 0,
+					minHeight: 0,
+					height: '100vh',
+					gap: 2,
 				}}
 			>
 				<Header />
-				<Box component='main' sx={{ flex: 1, p: 2 }}>
+				<Box
+					component='main'
+					sx={{ flex: 1, minHeight: 0, overflow: 'hidden' }}
+				>
 					<Outlet />
 				</Box>
 			</Box>
