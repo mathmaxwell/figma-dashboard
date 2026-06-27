@@ -1,4 +1,6 @@
 import { Box, Typography, useTheme } from '@mui/material'
+import HumansRating from './HumansRating'
+import HumanHistory from './HumanHistory'
 
 const DashboardStatistics = () => {
 	const theme = useTheme()
@@ -22,6 +24,7 @@ const DashboardStatistics = () => {
 						bgcolor: theme.palette.background.secondary,
 						width: '100%',
 						p: 2,
+						gap: 2,
 					}}
 				>
 					<Box
@@ -45,14 +48,33 @@ const DashboardStatistics = () => {
 							See all
 						</Box>
 					</Box>
-				</Box>
-				<Box>
-					<Typography variant='body2' sx={{ color: 'grey' }}>
-						Name
-					</Typography>
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							gap: 2,
+						}}
+					>
+						<Typography variant='body2' sx={{ color: 'grey', flex: 1 }}>
+							Name
+						</Typography>
+						<Typography
+							variant='body2'
+							sx={{ color: 'grey', width: 70, textAlign: 'center' }}
+						>
+							Artworks
+						</Typography>
+						<Typography
+							variant='body2'
+							sx={{ color: 'grey', width: 70, textAlign: 'center' }}
+						>
+							Rating
+						</Typography>
+					</Box>
 				</Box>
 			</Box>
-			<Box sx={{ bgcolor: theme.palette.background.paper }}>sometext</Box>
+			<HumansRating />
+			<HumanHistory />
 		</>
 	)
 }
