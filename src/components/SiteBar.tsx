@@ -12,7 +12,7 @@ import {
 import HomeIcon from '@mui/icons-material/Home'
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration'
 import { useLocation, useNavigate } from 'react-router-dom'
-
+import InsertChartIcon from '@mui/icons-material/InsertChart'
 const menuItems = [
 	{
 		label: 'Dashboard',
@@ -25,6 +25,12 @@ const menuItems = [
 		path: '/register',
 		icon: <AppRegistrationIcon />,
 		matches: ['/register'],
+	},
+	{
+		label: 'Tables',
+		path: '/tables',
+		icon: <InsertChartIcon />,
+		matches: ['/tables'],
 	},
 ]
 

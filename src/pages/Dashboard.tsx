@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import DashboardImages from '../components/DashboardImages'
 import DashboardStatistics from '../components/DashboardStatistics'
 import DashboardNav from '../components/DashboardNav'

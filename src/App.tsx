@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import Dashboard from './pages/Dashboard'
 import RegisterPage from './pages/RegisterPage'
 import IntroPage from './pages/IntroPage'
+import Tables from './pages/Tables'
 
 function App() {
 	return (
@@ -11,6 +12,7 @@ function App() {
 			<Route element={<Layout />}>
 				<Route path='/' element={<Dashboard />} />
 				<Route path='/dashboard' element={<Dashboard />} />
+				<Route path='/tables' element={<Tables />} />
 				<Route path='/register' element={<RegisterPage />} />
 			</Route>
 
