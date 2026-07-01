@@ -26,6 +26,7 @@ const Layout = () => {
 					minHeight: 0,
 					height: '100vh',
 					gap: 2,
+					
 				}}
 			>
 				<Header />

@@ -43,6 +43,8 @@ const TableChecker = () => {
 				sx={{
 					width: '100%',
 					height: '400px',
+					display: 'flex',
+					flexDirection: 'column',
 					bgcolor: theme.palette.background.secondary,
 					borderRadius: 4,
 					p: 2,
@@ -84,6 +86,8 @@ const TableChecker = () => {
 					pageSizeOptions={[5, 10]}
 					checkboxSelection
 					sx={{
+						flex: 1,
+						minHeight: 0,
 						border: 0,
 						color: 'white',
 						bgcolor: theme.palette.background.secondary,

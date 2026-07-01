@@ -68,6 +68,7 @@ const TableTraffic = () => {
 					<TableTrafficPens count={75} text='06' />
 					<TableTrafficPens count={50} text='07' />
 				</Box>
+				
 			</Box>
 		</>
 	)

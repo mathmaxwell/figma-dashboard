@@ -15,6 +15,7 @@ const Tables = () => {
 					gridTemplateColumns: '1fr',
 					justifyItems: 'center',
 					gap: 2,
+					height: '100%',
 					overflowY: 'auto',
 				}}
 			>
