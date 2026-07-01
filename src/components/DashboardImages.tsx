@@ -31,7 +31,7 @@ const DashboardImages = () => {
 						color: theme.palette.text.primary,
 					}}
 				>
-					Discover, collect, and sell extraordinary NFTs
+					Учись, развивайся и достигай новых высот
 				</Typography>
 				<Typography
 					variant='body1'
@@ -42,8 +42,8 @@ const DashboardImages = () => {
 						color: theme.palette.text.primary,
 					}}
 				>
-					Enter in this creative world. Discover now the latest NFTs or start
-					creating your own!
+					Добро пожаловать в мир знаний. Начни изучать новые уроки прямо
+					сейчас!
 				</Typography>
 				<Box
 					sx={{
@@ -61,10 +61,10 @@ const DashboardImages = () => {
 							borderRadius: 4,
 						}}
 					>
-						Discover now
+						Начать учёбу
 					</Button>
 					<Typography sx={{ color: 'white' }} variant='body1'>
-						Watch video
+						Смотреть видео
 					</Typography>
 				</Box>
 			</Box>

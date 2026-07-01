@@ -1,8 +1,8 @@
 import { Box, Typography, useTheme } from '@mui/material'
-import BarChartIcon from '@mui/icons-material/BarChart'
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
-import FolderCopyIcon from '@mui/icons-material/FolderCopy'
-import flag from '../images/flag.jpg'
+import GroupsIcon from '@mui/icons-material/Groups'
+import HowToRegIcon from '@mui/icons-material/HowToReg'
+import PersonOffIcon from '@mui/icons-material/PersonOff'
+import GradeIcon from '@mui/icons-material/Grade'
 import done from '../images/done.svg'
 const TableHeaderCards = () => {
 	const theme = useTheme()
@@ -11,7 +11,7 @@ const TableHeaderCards = () => {
 			<Box
 				sx={{
 					display: 'grid',
-					gridTemplateColumns: 'repeat(6, 1fr)',
+					gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))',
 					alignItems: 'stretch',
 					gap: 2,
 					width: '100%',
@@ -40,7 +40,7 @@ const TableHeaderCards = () => {
 							position: 'relative',
 						}}
 					>
-						<BarChartIcon
+						<GroupsIcon
 							sx={{
 								color: 'white',
 								position: 'absolute',
@@ -59,10 +59,10 @@ const TableHeaderCards = () => {
 						}}
 					>
 						<Typography variant='body1' sx={{ color: 'grey' }}>
-							Earnings
+							Всего учеников
 						</Typography>
 						<Typography variant='h6' sx={{ color: 'white' }}>
-							$350.4
+							1240
 						</Typography>
 					</Box>
 				</Box>
@@ -90,7 +90,7 @@ const TableHeaderCards = () => {
 							position: 'relative',
 						}}
 					>
-						<AttachMoneyIcon
+						<HowToRegIcon
 							sx={{
 								color: 'white',
 								position: 'absolute',
@@ -112,10 +112,10 @@ const TableHeaderCards = () => {
 							variant='body1'
 							sx={{ color: 'grey', textWrap: 'nowrap' }}
 						>
-							Spend this Month
+							Пришли сегодня
 						</Typography>
 						<Typography variant='h6' sx={{ color: 'white' }}>
-							$682.5
+							1180
 						</Typography>
 					</Box>
 				</Box>
@@ -145,16 +145,16 @@ const TableHeaderCards = () => {
 							variant='body1'
 							sx={{ color: 'grey', textWrap: 'nowrap' }}
 						>
-							Sales
+							Посещаемость
 						</Typography>
 						<Typography variant='h6' sx={{ color: 'white' }}>
-							$574.34
+							95%
 						</Typography>
 						<Typography
 							variant='body1'
 							sx={{ color: 'grey', textWrap: 'nowrap' }}
 						>
-							<span style={{ color: 'green' }}>+23%</span> since last month
+							<span style={{ color: 'green' }}>+2%</span> за неделю
 						</Typography>
 					</Box>
 				</Box>
@@ -184,10 +184,10 @@ const TableHeaderCards = () => {
 							variant='body1'
 							sx={{ color: 'grey', textWrap: 'nowrap' }}
 						>
-							Your balance
+							Средняя оценка
 						</Typography>
 						<Typography variant='h6' sx={{ color: 'white' }}>
-							$1,000
+							4.3
 						</Typography>
 					</Box>
 					<Box
@@ -200,17 +200,13 @@ const TableHeaderCards = () => {
 							position: 'relative',
 						}}
 					>
-						<img
-							src={flag}
-							alt=''
-							style={{
+						<GradeIcon
+							sx={{
+								color: 'white',
 								position: 'absolute',
 								top: '50%',
 								left: '50%',
 								transform: 'translate(-50%,-50%)',
-								borderRadius: '50%',
-								width: '50px',
-								height: '50px',
 							}}
 						/>
 					</Box>
@@ -263,10 +259,10 @@ const TableHeaderCards = () => {
 							variant='body1'
 							sx={{ color: 'grey', textWrap: 'nowrap' }}
 						>
-							New Tasks
+							Учителя на месте
 						</Typography>
 						<Typography variant='h6' sx={{ color: 'white' }}>
-							154
+							84
 						</Typography>
 					</Box>
 				</Box>
@@ -294,7 +290,7 @@ const TableHeaderCards = () => {
 							position: 'relative',
 						}}
 					>
-						<FolderCopyIcon
+						<PersonOffIcon
 							sx={{
 								color: 'white',
 								position: 'absolute',
@@ -313,10 +309,10 @@ const TableHeaderCards = () => {
 						}}
 					>
 						<Typography variant='body1' sx={{ color: 'grey' }}>
-							Total Projects
+							Отсутствуют
 						</Typography>
 						<Typography variant='h6' sx={{ color: 'white' }}>
-							2935
+							60
 						</Typography>
 					</Box>
 				</Box>

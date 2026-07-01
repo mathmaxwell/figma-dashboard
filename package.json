@@ -16,13 +16,14 @@
     "@mui/material": "^9.1.2",
     "@mui/x-charts": "^9.7.0",
     "@mui/x-data-grid": "^9.7.0",
+    "chance": "^1.1.13",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.18.0",
-    "zustand": "^5.0.14"
+    "react-router-dom": "^7.18.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/chance": "^1.1.8",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

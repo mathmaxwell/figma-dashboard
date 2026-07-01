@@ -1,7 +1,15 @@
 import { Box, Typography, useTheme } from '@mui/material'
 import { PieChart } from '@mui/x-charts'
 
-const TablePieChart = () => {
+export type EmotionSlice = { id: number; value: number; label: string }
+
+const TablePieChart = ({
+	title,
+	data,
+}: {
+	title: string
+	data: EmotionSlice[]
+}) => {
 	const theme = useTheme()
 	return (
 		<>
@@ -28,25 +36,15 @@ const TablePieChart = () => {
 					}}
 				>
 					<Typography variant='h6' sx={{ color: 'white' }}>
-						Your Pie Chart
+						{title}
 					</Typography>
 					<Typography sx={{ color: 'grey' }} variant='body1'>
-						Monthly
+						Сегодня
 					</Typography>
 				</Box>
-				<PieChart
-					series={[
-						{
-							data: [
-								{ id: 0, value: 10, label: 'series A' },
-								{ id: 1, value: 15, label: 'series B' },
-								{ id: 2, value: 20, label: 'series C' },
-							],
-						},
-					]}
-					width={300}
-					height={300}
-				/>
+				<Box sx={{ width: '100%', flex: 1, minHeight: 0 }}>
+					<PieChart series={[{ data }]} />
+				</Box>
 			</Box>
 		</>
 	)

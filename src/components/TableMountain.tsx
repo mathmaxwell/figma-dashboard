@@ -1,16 +1,16 @@
 import { Box, Typography, useTheme } from '@mui/material'
 import { BarChart } from '@mui/x-charts'
 import BarChartIcon from '@mui/icons-material/BarChart'
-const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490]
-const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300]
+const thisMonth = [4.5, 4.2, 3.9, 4.1, 4.4, 3.8, 4.6]
+const lastMonth = [4.3, 4.0, 4.1, 3.9, 4.2, 4.0, 4.4]
 const xLabels = [
-	'Page A',
-	'Page B',
-	'Page C',
-	'Page D',
-	'Page E',
-	'Page F',
-	'Page G',
+	'Алгебра',
+	'Геометрия',
+	'Физика',
+	'Химия',
+	'Биология',
+	'История',
+	'Языки',
 ]
 
 const TableMountain = () => {
@@ -34,11 +34,11 @@ const TableMountain = () => {
 					}}
 				>
 					<Typography variant='h6' sx={{ color: 'white' }}>
-						Weekly Revenue
+						Средние оценки
 					</Typography>
 
-					<Typography variant='h4' sx={{ color: 'white' }}>
-						table N_2
+					<Typography variant='h5' sx={{ color: 'white' }}>
+						По предметам
 					</Typography>
 					<Box
 						sx={{
@@ -61,8 +61,8 @@ const TableMountain = () => {
 				</Box>
 				<BarChart
 					series={[
-						{ data: pData, label: 'pv', id: 'pvId' },
-						{ data: uData, label: 'uv', id: 'uvId' },
+						{ data: thisMonth, label: 'Этот месяц', id: 'thisMonth' },
+						{ data: lastMonth, label: 'Прошлый месяц', id: 'lastMonth' },
 					]}
 					xAxis={[{ data: xLabels, height: 50 }]}
 					yAxis={[{ width: 50 }]}

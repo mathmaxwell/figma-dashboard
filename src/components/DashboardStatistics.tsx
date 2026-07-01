@@ -35,7 +35,7 @@ const DashboardStatistics = () => {
 						}}
 					>
 						<Typography sx={{ color: 'white' }} variant='h5'>
-							Top Creators
+							Топ ученики
 						</Typography>
 						<Box
 							sx={{
@@ -45,7 +45,7 @@ const DashboardStatistics = () => {
 								color: 'white',
 							}}
 						>
-							See all
+							Все
 						</Box>
 					</Box>
 					<Box
@@ -56,19 +56,19 @@ const DashboardStatistics = () => {
 						}}
 					>
 						<Typography variant='body2' sx={{ color: 'grey', flex: 1 }}>
-							Name
+							Имя
 						</Typography>
 						<Typography
 							variant='body2'
 							sx={{ color: 'grey', width: 70, textAlign: 'center' }}
 						>
-							Artworks
+							Баллы
 						</Typography>
 						<Typography
 							variant='body2'
 							sx={{ color: 'grey', width: 70, textAlign: 'center' }}
 						>
-							Rating
+							Рейтинг
 						</Typography>
 					</Box>
 				</Box>

@@ -8,12 +8,12 @@ import human1 from '../images/humans/Rectangle 346.png'
 import Rating from './Rating'
 
 const creators = [
-	{ img: human1, name: '@maddison_c21', artworks: 9821, rating: 90 },
-	{ img: human2, name: '@karl.will02', artworks: 7032, rating: 85 },
-	{ img: human3, name: '@andreea.1z', artworks: 5204, rating: 80 },
-	{ img: human4, name: '@abraham47.y', artworks: 4309, rating: 70 },
-	{ img: human5, name: '@ape.vpp8', artworks: 2907, rating: 50 },
-	{ img: human6, name: '@leon_pwrr', artworks: 2309, rating: 30 },
+	{ img: human1, name: 'Азиза Рахимова', artworks: 9821, rating: 90 },
+	{ img: human2, name: 'Карим Валиев', artworks: 7032, rating: 85 },
+	{ img: human3, name: 'Андрей Зотов', artworks: 5204, rating: 80 },
+	{ img: human4, name: 'Иброхим Юсупов', artworks: 4309, rating: 70 },
+	{ img: human5, name: 'Алишер Пулатов', artworks: 2907, rating: 50 },
+	{ img: human6, name: 'Леонид Петров', artworks: 2309, rating: 30 },
 ]
 
 const HumansRating = () => {

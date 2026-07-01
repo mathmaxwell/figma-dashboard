@@ -1,7 +1,17 @@
 import { Box, Typography, useTheme } from '@mui/material'
 import TableTrafficPens from './TableTrafficPens'
 
-const TableTraffic = () => {
+export type TrafficDay = { count: number; text: string }
+
+const TableTraffic = ({
+	title,
+	value,
+	data,
+}: {
+	title: string
+	value: string
+	data: TrafficDay[]
+}) => {
 	const theme = useTheme()
 	return (
 		<>
@@ -36,14 +46,14 @@ const TableTraffic = () => {
 						}}
 					>
 						<Typography sx={{ color: 'grey' }} variant='body1'>
-							Daily Traffic
+							{title}
 						</Typography>
 						<Typography sx={{ color: 'white' }} variant='h6'>
-							2.579{' '}
+							{value}{' '}
 							<span
 								style={{ color: 'grey', marginLeft: '4px', fontSize: '16px' }}
 							>
-								Visitors
+								присутствуют
 							</span>
 						</Typography>
 					</Box>
@@ -60,15 +70,10 @@ const TableTraffic = () => {
 						width: '100%',
 					}}
 				>
-					<TableTrafficPens count={50} text='01' />
-					<TableTrafficPens count={100} text='02' />
-					<TableTrafficPens count={90} text='03' />
-					<TableTrafficPens count={25} text='04' />
-					<TableTrafficPens count={87} text='05' />
-					<TableTrafficPens count={75} text='06' />
-					<TableTrafficPens count={50} text='07' />
+					{data.map(day => (
+						<TableTrafficPens key={day.text} count={day.count} text={day.text} />
+					))}
 				</Box>
-				
 			</Box>
 		</>
 	)

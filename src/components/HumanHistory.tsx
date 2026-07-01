@@ -10,45 +10,45 @@ const HumanHistory = () => {
 	const histroyArr = [
 		{
 			img: img1,
-			title: 'Colorful Heaven',
-			text: 'By Mark Benjamin',
-			const: '1.30 ETH',
-			time: '30s ago',
+			title: 'Химия',
+			text: 'Учитель: Марат Бахтиёров',
+			const: '95%',
+			time: '10 оценок',
 		},
 		{
 			img: img2,
-			title: 'Abstract Colors',
-			text: 'By Esthera Jackson',
-			const: '2.82 ETH',
-			time: '58s ago',
+			title: 'Алгебра',
+			text: 'Учитель: Азиз Каримов',
+			const: '88%',
+			time: '12 оценок',
 		},
 		{
 			img: img3,
-			title: 'ETH AI Brain',
-			text: 'By Nick Wilson',
-			const: '2.82 ETH',
-			time: '1m ago',
+			title: 'Геометрия',
+			text: 'Учитель: Дилноза Юсупова',
+			const: '82%',
+			time: '8 оценок',
 		},
 		{
 			img: img4,
-			title: 'Swipe Circles',
-			text: 'By Peter Will',
-			const: '2.30 ETH',
-			time: '1m ago',
+			title: 'Биология',
+			text: 'Учитель: Пётр Власов',
+			const: '76%',
+			time: '15 оценок',
 		},
 		{
 			img: img5,
-			title: 'Mesh Gradients',
-			text: 'By Will Smith',
-			const: '0.56 ETH',
-			time: '2m ago',
+			title: 'Физика',
+			text: 'Учитель: Шерзод Рахимов',
+			const: '90%',
+			time: '5 оценок',
 		},
 		{
 			img: img6,
-			title: '3D Cubes Art',
-			text: 'By Manny Gates',
-			const: '6.58 ETH',
-			time: '3m ago',
+			title: 'История',
+			text: 'Учитель: Мунира Гафурова',
+			const: '70%',
+			time: '20 оценок',
 		},
 	]
 	const theme = useTheme()
@@ -76,7 +76,7 @@ const HumanHistory = () => {
 					}}
 				>
 					<Typography sx={{ color: 'white' }} variant='h5'>
-						History
+						Последние уроки
 					</Typography>
 					<Box
 						sx={{
@@ -86,7 +86,7 @@ const HumanHistory = () => {
 							color: 'white',
 						}}
 					>
-						See all
+						Все
 					</Box>
 				</Box>
 				<Box

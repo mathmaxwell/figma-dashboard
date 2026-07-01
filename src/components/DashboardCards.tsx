@@ -1,17 +1,18 @@
 import { Box, Typography, useTheme } from '@mui/material'
-import img1 from '../images/bg-img-1.png'
-import img2 from '../images/bg-img-2.png'
-import img3 from '../images/bg-img-3.png'
-import img4 from '../images/bg-img-4.png'
-import img5 from '../images/bg-img-5.png'
-import img6 from '../images/bg-img-6.png'
 import human1 from '../images/human1.png'
 import human2 from '../images/human2.png'
 import human3 from '../images/human3.png'
+
 const DashboardCards = ({
-	imgNumber,
+	img,
+	title,
+	teacher,
+	lessons,
 }: {
-	imgNumber: 1 | 2 | 3 | 4 | 5 | 6
+	img: string
+	title: string
+	teacher: string
+	lessons: string
 }) => {
 	const theme = useTheme()
 	return (
@@ -20,15 +21,17 @@ const DashboardCards = ({
 				sx={{
 					p: 2,
 					bgcolor: theme.palette.background.secondary,
-					width: '100%',
+					width: 260,
+					flexShrink: 0,
 					borderRadius: 2,
 				}}
 			>
 				<Box
 					sx={{
-						backgroundImage: `url(${imgNumber === 1 ? img1 : imgNumber === 2 ? img2 : imgNumber === 3 ? img3 : imgNumber === 4 ? img4 : imgNumber === 5 ? img5 : img6})`,
+						backgroundImage: `url(${img})`,
 						backgroundPosition: 'center',
 						backgroundRepeat: 'no-repeat',
+						backgroundSize: 'cover',
 						width: '100%',
 						height: '200px',
 						borderRadius: 2,
@@ -51,18 +54,10 @@ const DashboardCards = ({
 						}}
 					>
 						<Typography variant='h6' sx={{ color: 'white' }}>
-							{imgNumber === 1
-								? 'Abstract Colors'
-								: imgNumber === 2
-									? 'ETH AI Brain'
-									: 'Mesh Gradients'}
+							{title}
 						</Typography>
 						<Typography variant='body2' sx={{ color: 'grey' }}>
-							{imgNumber === 1
-								? 'By Esthera Jackson'
-								: imgNumber === 2
-									? 'By Nick Wilson'
-									: 'By Will Smith'}
+							{teacher}
 						</Typography>
 					</Box>
 					<Box
@@ -130,11 +125,7 @@ const DashboardCards = ({
 					}}
 				>
 					<Typography variant='body1' sx={{ color: 'white' }}>
-						{imgNumber === 1
-							? '0.91 ETH'
-							: imgNumber === 2
-								? '2.82 ETH'
-								: '0.56 ETH'}
+						{lessons}
 					</Typography>
 					<Box
 						sx={{
@@ -144,7 +135,7 @@ const DashboardCards = ({
 							borderRadius: 4,
 						}}
 					>
-						Place Bid
+						Отсчёт
 					</Box>
 				</Box>
 			</Box>

@@ -47,7 +47,6 @@ const SiteBar = () => {
 				minWidth: '30px',
 				bgcolor: theme.palette.background.secondary,
 				height: '100vh',
-				border: '1px solid white',
 				borderRadius: 4,
 			}}
 		>

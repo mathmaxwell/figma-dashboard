@@ -3,17 +3,10 @@ import { LineChart } from '@mui/x-charts'
 import DateRangeIcon from '@mui/icons-material/DateRange'
 import BarChartIcon from '@mui/icons-material/BarChart'
 const margin = { right: 24 }
-const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490]
-const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300]
-const xLabels = [
-	'Page A',
-	'Page B',
-	'Page C',
-	'Page D',
-	'Page E',
-	'Page F',
-	'Page G',
-]
+const cameRate = [92, 96, 90, 97, 92, 50, 2]
+const lateRate = [5, 2, 6, 2, 5, 3, 1]
+const absentRate = [3, 2, 4, 1, 3, 47, 97]
+const xLabels = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
 
 const TableWave = () => {
 	const theme = useTheme()
@@ -48,10 +41,10 @@ const TableWave = () => {
 						}}
 					>
 						<DateRangeIcon />
-						<Typography>This month</Typography>
+						<Typography>Эта неделя</Typography>
 					</Box>
-					<Typography variant='h4' sx={{ color: 'white' }}>
-						table N_1
+					<Typography variant='h5' sx={{ color: 'white' }}>
+						Посещаемость
 					</Typography>
 					<Box
 						sx={{
@@ -75,15 +68,21 @@ const TableWave = () => {
 				<LineChart
 					series={[
 						{
-							data: pData,
-							label: 'pv',
+							data: cameRate,
+							label: 'Пришёл %',
+							shape: 'diamond',
+							showMark: ({ index }) => index % 2 === 0,
+						},
+						{
+							data: lateRate,
+							label: 'Опоздание %',
 							shape: 'cross',
 							showMark: ({ index }) => index % 2 === 0,
 						},
 						{
-							data: uData,
-							label: 'uv',
-							shape: 'diamond',
+							data: absentRate,
+							label: 'Не пришёл %',
+							shape: 'circle',
 							showMark: ({ index }) => index % 2 === 0,
 						},
 					]}
