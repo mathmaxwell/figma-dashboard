@@ -10,9 +10,9 @@ const TableHeaderCards = () => {
 		<>
 			<Box
 				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
+					display: 'grid',
+					gridTemplateColumns: 'repeat(6, 1fr)',
+					alignItems: 'stretch',
 					gap: 2,
 					width: '100%',
 				}}
