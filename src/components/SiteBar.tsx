@@ -21,16 +21,16 @@ const menuItems = [
 		matches: ['/', '/dashboard'],
 	},
 	{
-		label: 'Register',
-		path: '/register',
-		icon: <AppRegistrationIcon />,
-		matches: ['/register'],
-	},
-	{
 		label: 'Tables',
 		path: '/tables',
 		icon: <InsertChartIcon />,
 		matches: ['/tables'],
+	},
+	{
+		label: 'Register',
+		path: '/register',
+		icon: <AppRegistrationIcon />,
+		matches: ['/register'],
 	},
 ]
 
