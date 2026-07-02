@@ -6,7 +6,7 @@ import DashboardNews from './components/DashboardNews'
 import type { IGetForms, IScheduleSearch } from './types/dashboard'
 import { useQuery } from '@tanstack/react-query'
 import { useAuthStore } from '../register/store/auth'
-import { getAllForms, getSchedulesByDay } from './api/dashboard'
+import { getAllForms, getSchedulesByDay, getStudentByClassName } from './api/dashboard'
 import { getEndOfDayIso, getStartOfDayIso } from '../../func/day'
 const Dashboard = () => {
 	const { token } = useAuthStore()
@@ -37,7 +37,21 @@ const Dashboard = () => {
 		},
 		enabled: !!token,
 	})
+	const { data: std , isLoading: lostd } = useQuery<
+		any[],
+		Error
+	>({
+		queryKey: ['std', token],
+		queryFn: async () => {
 
+			return (
+				(await getStudentByClassName(token!, '3-A')) || []
+			)
+		},
+		enabled: !!token,
+	})
+    console.log('std',std);
+    
 	return (
 		<>
 			<Box

@@ -37,7 +37,7 @@ function RegisterPage() {
 			>
 				<div>
 					<Typography sx={{ color: 'white' }} variant='h3'>
-						Sign In
+						regidter
 					</Typography>
 					<Typography sx={{ color: 'grey' }} variant='h6'>
 						Enter your login and password to sign in!

@@ -51,3 +51,25 @@ export async function getSchedulesByDay(
 		return
 	}
 }
+export async function getStudentByClassName(token: string, formName: string) {
+ try {
+  const responce = await api.post('/card/getStudents', {
+   ...API_CONFIG,
+   data: {
+    token: `Token ${token}`,
+    name: '',
+    gender: '',
+    idIn: [],
+    formName: formName,
+    lastEmotion: '',
+    limit: 100,
+    page: 1,
+   },
+  })
+  const result = responce.data.data as any[]
+  return result
+ } catch (error) {
+  console.log(error)
+  return []
+ }
+}
