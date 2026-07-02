@@ -19,7 +19,7 @@ const DashboardNav = ({
 	subjects: IScheduleSearch[]
 }) => {
 	const [selectClass, setSelectClass] = useState(classes[0]?.id)
-
+///some fn
 	return (
 		<>
 			<Box

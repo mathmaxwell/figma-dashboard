@@ -37,21 +37,8 @@ const Dashboard = () => {
 		},
 		enabled: !!token,
 	})
-	const { data: std , isLoading: lostd } = useQuery<
-		any[],
-		Error
-	>({
-		queryKey: ['std', token],
-		queryFn: async () => {
 
-			return (
-				(await getStudentByClassName(token!, '3-A')) || []
-			)
-		},
-		enabled: !!token,
-	})
-    console.log('std',std);
-    
+
 	return (
 		<>
 			<Box
