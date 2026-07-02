@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from '@mui/material'
-import background from '../images/Background.png'
-import o from '../images/o.svg'
+import background from '../../images/Background.png'
+import o from '../../images/o.svg'
 import { useNavigate } from 'react-router-dom'
 const IntroPage = () => {
 	const navigate = useNavigate()

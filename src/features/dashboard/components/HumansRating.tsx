@@ -1,10 +1,10 @@
 import { Box, Typography, useTheme } from '@mui/material'
-import human6 from '../images/humans/Rectangle 346-2.png'
-import human5 from '../images/humans/Rectangle 346-3.png'
-import human4 from '../images/humans/Rectangle 346-4.png'
-import human3 from '../images/humans/Rectangle 346-5.png'
-import human2 from '../images/humans/Rectangle 346-6.png'
-import human1 from '../images/humans/Rectangle 346.png'
+import human6 from '../../../images/humans/Rectangle 346-2.png'
+import human5 from '../../../images/humans/Rectangle 346-3.png'
+import human4 from '../../../images/humans/Rectangle 346-4.png'
+import human3 from '../../../images/humans/Rectangle 346-5.png'
+import human2 from '../../../images/humans/Rectangle 346-6.png'
+import human1 from '../../../images/humans/Rectangle 346.png'
 import Rating from './Rating'
 
 const creators = [

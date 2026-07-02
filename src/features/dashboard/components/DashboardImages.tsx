@@ -1,5 +1,5 @@
 import { Box, Button, Typography, useTheme } from '@mui/material'
-import bgImage from '../images/dashboard-bg-img.png'
+import bgImage from '../../../images/dashboard-bg-img.png'
 
 const DashboardImages = () => {
 	const theme = useTheme()

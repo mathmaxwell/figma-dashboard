@@ -1,10 +1,10 @@
 import { Box, Typography, useTheme } from '@mui/material'
-import img1 from '../images/bg-img-1.png'
-import img2 from '../images/bg-img-2.png'
-import img3 from '../images/bg-img-3.png'
-import img4 from '../images/bg-img-4.png'
-import img5 from '../images/bg-img-5.png'
-import img6 from '../images/bg-img-6.png'
+import img1 from '../../../images/bg-img-1.png'
+import img2 from '../../../images/bg-img-2.png'
+import img3 from '../../../images/bg-img-3.png'
+import img4 from '../../../images/bg-img-4.png'
+import img5 from '../../../images/bg-img-5.png'
+import img6 from '../../../images/bg-img-6.png'
 
 type News = { img: string; date: string; title: string; text: string }
 

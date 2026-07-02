@@ -1,19 +1,23 @@
 import { Box, Typography, useTheme } from '@mui/material'
-import human1 from '../images/human1.png'
-import human2 from '../images/human2.png'
-import human3 from '../images/human3.png'
+import human1 from '../../../images/human1.png'
+import human2 from '../../../images/human2.png'
+import human3 from '../../../images/human3.png'
+import { useNavigate } from 'react-router-dom'
 
 const DashboardCards = ({
 	img,
 	title,
 	teacher,
 	lessons,
+	id,
 }: {
 	img: string
 	title: string
 	teacher: string
 	lessons: string
+	id: string
 }) => {
+	const navigate = useNavigate()
 	const theme = useTheme()
 	return (
 		<>
@@ -128,6 +132,9 @@ const DashboardCards = ({
 						{lessons}
 					</Typography>
 					<Box
+						onClick={() => {
+							navigate(`/subject/${id}`)
+						}}
 						sx={{
 							p: '5px 24px',
 							bgcolor: theme.palette.primary.main,

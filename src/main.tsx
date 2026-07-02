@@ -1,13 +1,19 @@
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "@mui/material";
-import App from "./App.tsx";
-import theme from "./theme.ts";
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { ThemeProvider } from '@mui/material'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-createRoot(document.getElementById("root")!).render(
-  <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ThemeProvider>,
-);
+import App from './App.tsx'
+import theme from './theme.ts'
+
+const queryClient = new QueryClient()
+
+createRoot(document.getElementById('root')!).render(
+	<QueryClientProvider client={queryClient}>
+		<ThemeProvider theme={theme}>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</ThemeProvider>
+	</QueryClientProvider>,
+)
