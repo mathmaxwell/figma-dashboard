@@ -1,30 +1,52 @@
+import { useMemo } from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
-import human6 from '../../../images/humans/Rectangle 346-2.png'
-import human5 from '../../../images/humans/Rectangle 346-3.png'
-import human4 from '../../../images/humans/Rectangle 346-4.png'
-import human3 from '../../../images/humans/Rectangle 346-5.png'
-import human2 from '../../../images/humans/Rectangle 346-6.png'
-import human1 from '../../../images/humans/Rectangle 346.png'
 import Rating from './Rating'
+import { useSelectClassStore } from '../store/selectClass'
+import { useQuery } from '@tanstack/react-query'
+import type { IGrade, IStudent } from '../types/dashboard'
+import { useAuthStore } from '../../register/store/auth'
+import { getStudentByClassName } from '../api/dashboard'
+import LoadingProgress from '../../../components/ui/LoadingProgress'
 
-const creators = [
-	{ img: human1, name: 'Азиза Рахимова', artworks: 9821, rating: 90 },
-	{ img: human2, name: 'Карим Валиев', artworks: 7032, rating: 85 },
-	{ img: human3, name: 'Андрей Зотов', artworks: 5204, rating: 80 },
-	{ img: human4, name: 'Иброхим Юсупов', artworks: 4309, rating: 70 },
-	{ img: human5, name: 'Алишер Пулатов', artworks: 2907, rating: 50 },
-	{ img: human6, name: 'Леонид Петров', artworks: 2309, rating: 30 },
-]
+const HumansRating = ({ grades }: { grades: IGrade[] }) => {
+	const { token } = useAuthStore()
+	const selectClass = useSelectClassStore(state => state.selectClassName)
+	const { data: students = [], isLoading: isStudentLoading } = useQuery<
+		IStudent[],
+		Error
+	>({
+		queryKey: ['forms', selectClass],
+		queryFn: () => {
+			if (!token) throw new Error('No token provided')
+			if (!selectClass) throw new Error('No selectClass provided')
+			return getStudentByClassName(token, selectClass)
+		},
+		enabled: !!token,
+	})
 
-const HumansRating = () => {
+	const ratedStudents = useMemo(() => {
+		const withAvg = students.map(student => {
+			const studentGrades = grades.filter(g => g.studentId === student.id)
+			const avgGrade = studentGrades.length
+				? studentGrades.reduce((sum, g) => sum + g.grade, 0) /
+					studentGrades.length
+				: 0
+			return { student, avgGrade }
+		})
+		withAvg.sort((a, b) => b.avgGrade - a.avgGrade)
+		return withAvg.slice(0, 10)
+	}, [students, grades])
+
 	const theme = useTheme()
 	return (
 		<>
 			<Box
 				sx={{
+					flex: 1,
+					minHeight: 0,
+					overflowY: 'auto',
 					display: 'flex',
 					flexDirection: 'column',
-					justifyContent: 'center',
 					alignItems: 'normal',
 					gap: 2,
 					p: 2,
@@ -34,45 +56,58 @@ const HumansRating = () => {
 					borderBottomRightRadius: 16,
 				}}
 			>
-				{creators.map(creator => (
-					<Box
-						key={creator.name}
-						sx={{
-							display: 'flex',
-							alignItems: 'center',
-							gap: 2,
-						}}
-					>
+				{isStudentLoading ? (
+					<LoadingProgress />
+				) : (
+					ratedStudents.map(({ student, avgGrade }) => (
 						<Box
+							key={student.id}
 							sx={{
-								flex: 1,
 								display: 'flex',
 								alignItems: 'center',
-								gap: 1,
+								gap: 2,
 							}}
 						>
-							<img src={creator.img} alt='' />
-							<Typography variant='body1' sx={{ color: 'white' }}>
-								{creator.name}
+							<Box
+								sx={{
+									flex: 1,
+									display: 'flex',
+									alignItems: 'center',
+									gap: 1,
+								}}
+							>
+								<img
+									src={student.face?.thumbnail}
+									style={{
+										width: '50px',
+										height: '50px',
+										objectFit: 'cover',
+										borderRadius: '50%',
+									}}
+									alt=''
+								/>
+								<Typography variant='body1' sx={{ color: 'white' }}>
+									{student.name}
+								</Typography>
+							</Box>
+							<Typography
+								variant='body1'
+								sx={{ color: 'white', width: 70, textAlign: 'center' }}
+							>
+								{avgGrade.toFixed(1)}
 							</Typography>
+							<Box
+								sx={{
+									width: 70,
+									display: 'flex',
+									justifyContent: 'center',
+								}}
+							>
+								<Rating rating={(avgGrade / 5) * 100} />
+							</Box>
 						</Box>
-						<Typography
-							variant='body1'
-							sx={{ color: 'white', width: 70, textAlign: 'center' }}
-						>
-							{creator.artworks}
-						</Typography>
-						<Box
-							sx={{
-								width: 70,
-								display: 'flex',
-								justifyContent: 'center',
-							}}
-						>
-							<Rating rating={creator.rating} />
-						</Box>
-					</Box>
-				))}
+					))
+				)}
 			</Box>
 		</>
 	)

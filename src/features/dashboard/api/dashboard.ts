@@ -1,6 +1,11 @@
 import api, { API_CONFIG } from '../../../api/api'
 import { toLocalISOString } from '../../../func/day'
-import type { IGetForms, IGrade, IScheduleSearch } from '../types/dashboard'
+import type {
+	IGetForms,
+	IGrade,
+	IScheduleSearch,
+	IStudent,
+} from '../types/dashboard'
 
 export async function getAllForms(token: string) {
 	try {
@@ -67,7 +72,7 @@ export async function getStudentByClassName(token: string, formName: string) {
 				page: 1,
 			},
 		})
-		const result = responce.data.data as any[]
+		const result = responce.data.data as IStudent[]
 		return result
 	} catch (error) {
 		console.log(error)

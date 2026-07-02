@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { Box, MenuItem, Select } from '@mui/material'
 import DashboardCards from './DashboardCards'
+import { useSelectClassStore } from '../store/selectClass'
 import img1 from '../../../images/bg-img-1.png'
 import img2 from '../../../images/bg-img-2.png'
 import img3 from '../../../images/bg-img-3.png'
@@ -18,8 +19,15 @@ const DashboardNav = ({
 	classes: IGetForms[]
 	subjects: IScheduleSearch[]
 }) => {
-	const [selectClass, setSelectClass] = useState(classes[0]?.id)
-///some fn
+	const selectClassId = useSelectClassStore(state => state.selectClassId)
+	const setSelectClass = useSelectClassStore(state => state.setSelectClass)
+
+	useEffect(() => {
+		if (!selectClassId && classes[0]?.id) {
+			setSelectClass({ id: classes[0].id, name: classes[0].name })
+		}
+	}, [classes, selectClassId, setSelectClass])
+
 	return (
 		<>
 			<Box
@@ -32,9 +40,12 @@ const DashboardNav = ({
 				}}
 			>
 				<Select
-					value={selectClass}
+					value={selectClassId}
 					onChange={e => {
-						setSelectClass(e.target.value)
+						const selected = classes.find(item => item.id === e.target.value)
+						if (selected) {
+							setSelectClass({ id: selected.id, name: selected.name })
+						}
 					}}
 					variant='standard'
 					disableUnderline
@@ -65,7 +76,7 @@ const DashboardNav = ({
 				}}
 			>
 				{subjects.map((subject, ind) => {
-					if (subject.formId == selectClass) {
+					if (subject.formId == selectClassId) {
 						return (
 							<DashboardCards
 								key={subject.subjectName}

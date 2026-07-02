@@ -1,56 +1,47 @@
+import { useMemo } from 'react'
 import { Box, Typography, useTheme } from '@mui/material'
-import img1 from '../../../images/bg-img-1.png'
-import img2 from '../../../images/bg-img-2.png'
-import img3 from '../../../images/bg-img-3.png'
-import img4 from '../../../images/bg-img-4.png'
-import img5 from '../../../images/bg-img-5.png'
-import img6 from '../../../images/bg-img-6.png'
+
 import cost from '../../../images/cost.svg'
-const HumanHistory = () => {
-	const histroyArr = [
-		{
-			img: img1,
-			title: 'Химия',
-			text: 'Учитель: Марат Бахтиёров',
-			const: '95%',
-			time: '10 оценок',
-		},
-		{
-			img: img2,
-			title: 'Алгебра',
-			text: 'Учитель: Азиз Каримов',
-			const: '88%',
-			time: '12 оценок',
-		},
-		{
-			img: img3,
-			title: 'Геометрия',
-			text: 'Учитель: Дилноза Юсупова',
-			const: '82%',
-			time: '8 оценок',
-		},
-		{
-			img: img4,
-			title: 'Биология',
-			text: 'Учитель: Пётр Власов',
-			const: '76%',
-			time: '15 оценок',
-		},
-		{
-			img: img5,
-			title: 'Физика',
-			text: 'Учитель: Шерзод Рахимов',
-			const: '90%',
-			time: '5 оценок',
-		},
-		{
-			img: img6,
-			title: 'История',
-			text: 'Учитель: Мунира Гафурова',
-			const: '70%',
-			time: '20 оценок',
-		},
-	]
+import type { IGetForms, IGrade, IScheduleSearch } from '../types/dashboard'
+const HumanHistory = ({
+	subjects,
+	grades,
+	classes,
+}: {
+	subjects: IScheduleSearch[]
+	grades: IGrade[]
+	classes: IGetForms[]
+}) => {
+	const ratingArr = useMemo(() => {
+		const formatTime = (iso: string) =>
+			iso
+				? new Date(iso).toLocaleTimeString('ru-RU', {
+						hour: '2-digit',
+						minute: '2-digit',
+					})
+				: ''
+		return subjects
+			.map(subject => {
+				const lessonGrades = grades.filter(g => g.scheduleId === subject.id)
+				const avgGrade = lessonGrades.length
+					? lessonGrades.reduce((sum, g) => sum + g.grade, 0) /
+						lessonGrades.length
+					: 0
+				return {
+					title: subject.subjectName,
+					text: subject.teacherName,
+					className: classes.find(c => c.id === subject.formId)?.name ?? '',
+					const: avgGrade.toFixed(1),
+					start: formatTime(subject.startTime),
+					end: formatTime(subject.endTime),
+					count: lessonGrades.length,
+				}
+			})
+			.filter(lesson => lesson.count > 0)
+			.sort((a, b) => Number(b.const) - Number(a.const))
+			.slice(0, 10)
+	}, [subjects, grades, classes])
+
 	const theme = useTheme()
 	return (
 		<>
@@ -65,28 +56,65 @@ const HumanHistory = () => {
 				<Box
 					sx={{
 						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'space-between',
+						flexDirection: 'column',
 						bgcolor: theme.palette.background.secondary,
 						width: '100%',
 						mt: 2,
 						p: 2,
+						gap: 2,
 						borderTopLeftRadius: '16px',
 						borderTopRightRadius: '16px',
 					}}
 				>
-					<Typography sx={{ color: 'white' }} variant='h5'>
-						Последние уроки
-					</Typography>
 					<Box
 						sx={{
-							p: '4px 20px',
-							bgcolor: theme.palette.primary.main,
-							borderRadius: 4,
-							color: 'white',
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'space-between',
 						}}
 					>
-						Все
+						<Typography sx={{ color: 'white' }} variant='h5'>
+							Последние уроки
+						</Typography>
+						<Box
+							sx={{
+								p: '4px 20px',
+								bgcolor: theme.palette.primary.main,
+								borderRadius: 4,
+								color: 'white',
+							}}
+						>
+							Все
+						</Box>
+					</Box>
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							gap: 2,
+						}}
+					>
+						<Typography variant='body2' sx={{ color: 'grey', flex: 1 }}>
+							Урок
+						</Typography>
+						<Typography
+							variant='body2'
+							sx={{ color: 'grey', width: 90, textAlign: 'center' }}
+						>
+							Класс
+						</Typography>
+						<Typography
+							variant='body2'
+							sx={{ color: 'grey', width: 70, textAlign: 'center' }}
+						>
+							Баллы
+						</Typography>
+						<Typography
+							variant='body2'
+							sx={{ color: 'grey', width: 100, textAlign: 'center' }}
+						>
+							Время
+						</Typography>
 					</Box>
 				</Box>
 				<Box
@@ -99,39 +127,38 @@ const HumanHistory = () => {
 						bgcolor: theme.palette.background.paper,
 					}}
 				>
-					{histroyArr.map((card, ind) => (
+					{ratingArr.map((card, ind) => (
 						<Box
 							key={ind}
 							sx={{
 								display: 'flex',
 								alignItems: 'center',
-								justifyContent: 'space-between',
 								gap: 2,
 							}}
 						>
-							<img
-								src={card.img}
-								style={{ width: '66px', height: '66px', borderRadius: '12px' }}
-								alt=''
-							/>
 							<Box
 								sx={{
+									flex: 1,
 									display: 'flex',
 									flexDirection: 'column',
-									alignItems: 'center',
-									justifyContent: 'center',
-									flex: 1,
 								}}
 							>
 								<Typography sx={{ color: 'white' }} variant='body1'>
 									{card.title}
 								</Typography>
-								<Typography sx={{ color: 'grey' }} variant='body1'>
+								<Typography sx={{ color: 'grey' }} variant='body2'>
 									{card.text}
 								</Typography>
 							</Box>
+							<Typography
+								variant='body2'
+								sx={{ color: 'white', width: 90, textAlign: 'center' }}
+							>
+								{card.className}
+							</Typography>
 							<Box
 								sx={{
+									width: 70,
 									display: 'flex',
 									alignItems: 'center',
 									justifyContent: 'center',
@@ -143,8 +170,11 @@ const HumanHistory = () => {
 									{card.const}
 								</Typography>
 							</Box>
-							<Typography variant='body1' sx={{ color: 'white' }}>
-								{card.time}
+							<Typography
+								variant='body2'
+								sx={{ color: 'white', width: 100, textAlign: 'center' }}
+							>
+								{card.start} - {card.end}
 							</Typography>
 						</Box>
 					))}

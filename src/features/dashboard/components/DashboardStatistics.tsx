@@ -4,13 +4,13 @@ import HumanHistory from './HumanHistory'
 import type { IGetForms, IGrade, IScheduleSearch } from '../types/dashboard'
 
 const DashboardStatistics = ({
-	classes,
 	subjects,
 	grades,
+	classes,
 }: {
-	classes: IGetForms[]
 	subjects: IScheduleSearch[]
 	grades: IGrade[]
+	classes: IGetForms[]
 }) => {
 	const theme = useTheme()
 	return (
@@ -18,11 +18,9 @@ const DashboardStatistics = ({
 			<Box
 				sx={{
 					width: '100%',
+					height: '350px',
 					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
 					flexDirection: 'column',
-					gap: 2,
 				}}
 			>
 				<Box
@@ -81,9 +79,9 @@ const DashboardStatistics = ({
 						</Typography>
 					</Box>
 				</Box>
+				<HumansRating grades={grades} />
 			</Box>
-			<HumansRating />
-			<HumanHistory />
+			<HumanHistory subjects={subjects} grades={grades} classes={classes} />
 		</>
 	)
 }

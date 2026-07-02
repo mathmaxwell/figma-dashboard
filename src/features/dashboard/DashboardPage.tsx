@@ -47,7 +47,6 @@ const Dashboard = () => {
 		},
 		enabled: !!token,
 	})
-	console.log('grades', grades)
 
 	return (
 		<>
@@ -90,9 +89,9 @@ const Dashboard = () => {
 				>
 					{!isLoadingClass && !isSubjectsLoading && !isGradesLoading && (
 						<DashboardStatistics
-							classes={classes}
 							subjects={subjects}
 							grades={grades}
+							classes={classes}
 						/>
 					)}
 				</Box>

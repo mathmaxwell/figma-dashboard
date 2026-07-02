@@ -1,3 +1,5 @@
+import type { IEmotionsType, IGender } from '../../../types/types'
+
 export interface IGetForms {
 	id: string
 	name: string
@@ -25,4 +27,15 @@ export interface IGrade {
 	studentId: string
 	formId: string
 	createdAt: string
+}
+export interface IStudent {
+	face: { src: string; thumbnail: string } | null
+	firstEventTime: string | null
+	formId: string
+	formName: string
+	gender: IGender
+	id: string
+	lastEmotion: IEmotionsType | null
+	lastEventTime: string | null
+	name: string
 }
