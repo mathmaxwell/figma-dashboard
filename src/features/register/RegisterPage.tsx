@@ -37,14 +37,14 @@ function RegisterPage() {
 			>
 				<div>
 					<Typography sx={{ color: 'white' }} variant='h3'>
-						regidter
+						Регистрация
 					</Typography>
 					<Typography sx={{ color: 'grey' }} variant='h6'>
-						Enter your login and password to sign in!
+						Введите ваш логин и пароль, чтобы войти!
 					</Typography>
 				</div>
 				<FormControl variant='filled' fullWidth sx={{ maxWidth: 400 }}>
-					<InputLabel htmlFor={`${outlinedLoginId}-input`}>Login</InputLabel>
+					<InputLabel htmlFor={`${outlinedLoginId}-input`}>Войти</InputLabel>
 					<OutlinedInput
 						id={`${outlinedLoginId}-input`}
 						value={login}
@@ -57,7 +57,7 @@ function RegisterPage() {
 				</FormControl>
 				<FormControl variant='filled' fullWidth sx={{ maxWidth: 400 }}>
 					<InputLabel htmlFor={`${outlinedPasswordId}-input`}>
-						Password
+						Пароль
 					</InputLabel>
 					<OutlinedInput
 						id={`${outlinedPasswordId}-input`}
@@ -127,7 +127,7 @@ function RegisterPage() {
 						}
 					}}
 				>
-					Sign In
+					Войти
 				</Button>
 			</Box>
 		</>
