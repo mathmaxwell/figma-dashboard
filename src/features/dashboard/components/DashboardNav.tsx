@@ -18,7 +18,7 @@ const DashboardNav = ({
 	classes: IGetForms[]
 	subjects: IScheduleSearch[]
 }) => {
-	const [selectClass, setSelectClass] = useState(classes[0].name)
+	const [selectClass, setSelectClass] = useState(classes[0]?.id)
 
 	return (
 		<>
@@ -47,7 +47,7 @@ const DashboardNav = ({
 					}}
 				>
 					{classes.map(item => (
-						<MenuItem key={item.id} value={item.name}>
+						<MenuItem key={item.id} value={item.id}>
 							Уроки для {item.name}
 						</MenuItem>
 					))}
@@ -65,16 +65,18 @@ const DashboardNav = ({
 				}}
 			>
 				{subjects.map((subject, ind) => {
-					return (
-						<DashboardCards
-							key={subject.subjectName}
-							img={images[ind % images.length]}
-							title={subject.teacherName}
-							teacher={''}
-							lessons={subject.subjectName}
-							id={subject.id}
-						/>
-					)
+					if (subject.formId == selectClass) {
+						return (
+							<DashboardCards
+								key={subject.subjectName}
+								img={images[ind % images.length]}
+								title={subject.teacherName}
+								teacher={''}
+								lessons={subject.subjectName}
+								id={subject.id}
+							/>
+						)
+					}
 				})}
 			</Box>
 		</>

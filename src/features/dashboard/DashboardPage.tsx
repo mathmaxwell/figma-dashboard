@@ -37,7 +37,6 @@ const Dashboard = () => {
 		},
 		enabled: !!token,
 	})
-	console.log('subjects', subjects)
 
 	return (
 		<>
@@ -62,7 +61,7 @@ const Dashboard = () => {
 					}}
 				>
 					<DashboardImages />
-					{!isLoadingClass && (
+					{!isLoadingClass && !isSubjectsLoading && (
 						<DashboardNav classes={classes} subjects={subjects} />
 					)}
 					<DashboardNews />
