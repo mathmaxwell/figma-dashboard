@@ -1,8 +1,17 @@
 import { Box, Typography, useTheme } from '@mui/material'
 import HumansRating from './HumansRating'
 import HumanHistory from './HumanHistory'
+import type { IGetForms, IGrade, IScheduleSearch } from '../types/dashboard'
 
-const DashboardStatistics = () => {
+const DashboardStatistics = ({
+	classes,
+	subjects,
+	grades,
+}: {
+	classes: IGetForms[]
+	subjects: IScheduleSearch[]
+	grades: IGrade[]
+}) => {
 	const theme = useTheme()
 	return (
 		<>

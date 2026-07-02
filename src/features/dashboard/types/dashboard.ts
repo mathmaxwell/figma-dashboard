@@ -17,3 +17,12 @@ export interface IScheduleSearch {
 	isVisible: boolean
 	isReplaced: boolean
 }
+export interface IGrade {
+	id: string
+	scheduleId: string
+	subjectName: string
+	grade: number
+	studentId: string
+	formId: string
+	createdAt: string
+}

@@ -3,10 +3,10 @@ import DashboardImages from './components/DashboardImages'
 import DashboardStatistics from './components/DashboardStatistics'
 import DashboardNav from './components/DashboardNav'
 import DashboardNews from './components/DashboardNews'
-import type { IGetForms, IScheduleSearch } from './types/dashboard'
+import type { IGetForms, IGrade, IScheduleSearch } from './types/dashboard'
 import { useQuery } from '@tanstack/react-query'
 import { useAuthStore } from '../register/store/auth'
-import { getAllForms, getSchedulesByDay } from './api/dashboard'
+import { getAllForms, getAllGrades, getSchedulesByDay } from './api/dashboard'
 import { getEndOfDayIso, getStartOfDayIso } from '../../func/day'
 const Dashboard = () => {
 	const { token } = useAuthStore()
@@ -37,7 +37,17 @@ const Dashboard = () => {
 		},
 		enabled: !!token,
 	})
-
+	const { data: grades = [], isLoading: isGradesLoading } = useQuery<
+		IGrade[],
+		Error
+	>({
+		queryKey: ['grades', token],
+		queryFn: async () => {
+			return (await getAllGrades(token!, '', '')) || []
+		},
+		enabled: !!token,
+	})
+	console.log('grades', grades)
 
 	return (
 		<>
@@ -78,7 +88,13 @@ const Dashboard = () => {
 						borderRadius: 4,
 					}}
 				>
-					<DashboardStatistics />
+					{!isLoadingClass && !isSubjectsLoading && !isGradesLoading && (
+						<DashboardStatistics
+							classes={classes}
+							subjects={subjects}
+							grades={grades}
+						/>
+					)}
 				</Box>
 			</Box>
 		</>
